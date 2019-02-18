@@ -6,6 +6,17 @@ namespace ForensicsCat.Models
 {
     class ServiceInfo
     {
+        public enum ServiceType
+        {
+            KernelDriver = 1,
+            FileSystemDriver = 2,
+            Adapter = 4,
+            RecognizerDriver = 8,
+            Win32OwnProcess = 16,
+            Win32ShareProcess = 32,
+            InteractiveProcess = 256
+        };
+
         public string Name;
         public string DisplayName;
         public string Description;
@@ -13,8 +24,12 @@ namespace ForensicsCat.Models
         public string ImagePath;
         public string FailureCommand;
 
+        public string ServiceDLL;
+
         public string ServiceAccount;
-        public List<string> Dependencies;
+        public string[] Dependencies;
+
+        public ServiceType Type;
 
         public DateTime LastModified;
     }
